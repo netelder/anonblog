@@ -1,32 +1,39 @@
-get '/post' do
-  #get all post titles
-  #send them to the display post titles erb
-  erb :titles
+get '/posts' do
+  if params[:tag]
+    @tag = Tag.find(params[:tag])
+    @posts = @tag.posts
+  else 
+    @posts = Post.all
+  end
+  @tags = Tag.all
+  erb :posts
 end
 
-get '/post/:id' do
-  #get post(id)
+get '/posts/:id' do
+  @post = Post.find(params[:id])
   #send it to the display post erb
-  erb :post
+  erb :show_post
 end
 
-get '/post/new' do
-  erb :newpost
+get '/posts/:id/edit' do
+  # get post(id)
+  erb :edit_post
 end
 
-delete '/post/:id' do
+
+get '/posts/new' do
+  erb :new_post
+end
+
+delete '/posts/:id' do
   #delete post(id)
   @deleted = params[:id]
-  erb :titles
+  erb :posts
 end
 
-get '/post/:id' do
-  # get post(id)
-  erb :edit
-end
 
-post '/post/:id' do
-  # send post to database
+post '/posts' do
+  # Create a post
   # retrieve post
-  erb :post
+  erb :show_post
 end
