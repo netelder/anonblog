@@ -1,0 +1,13 @@
+<h3>Create your Post</h3>
+<form name="post" action="/posts" method="post">
+  <div class="six columns">
+    <label>Post Title</label>
+    <input type="text" name="title" required = "required" placeholder="Title" />
+    <label>Tags</label>
+    <input type="text" name="tags" required = "required" placeholder="<%=get_tags%> (or add your own)" />
+    <label>Post Body</label>
+    <textarea name="body" rows="20" required = "required" placeholder="Your Post"></textarea>
+    <input type="submit" class="small button">
+  </div>
+</form>
+

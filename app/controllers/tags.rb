@@ -1,6 +1,10 @@
 get '/tags' do
-  # get all tag names
-  # display them in a clickable page that calls /tag/:name
+  redirect '/posts'
+end
+
+get '/tags/:name' do
+  @tag = Tag.find_by_name(params[:name])
+  @posts = @tag.posts
   @tags = Tag.all
-  erb :tags
+  erb :posts
 end

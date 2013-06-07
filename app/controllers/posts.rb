@@ -9,6 +9,10 @@ get '/posts' do
   erb :posts
 end
 
+get '/posts/new' do
+  erb :new_post
+end
+
 get '/posts/:id' do
   @post = Post.find(params[:id])
   #send it to the display post erb
@@ -21,21 +25,21 @@ get '/posts/:id/edit' do
   erb :edit_post
 end
 
-
-get '/posts/new' do
-  erb :new_post
-end
-
 delete '/posts/:id' do
-  #delete post(id)
-  @deleted = params[:id]
-  @tags = Tag.all
-  erb :posts
+  p 'destroy'
+  Post.destroy(params[:id])
+ redirect '/posts'
 end
 
 
 post '/posts' do
   # Create a post
-  # retrieve post
+  @post = Post.create(:title => params[:title], :body => params[:body])
+  tags = params[:tags].split(',')
+
+  tags.each do | tag |
+    Tag.find_or_create_by_name(:name => "#{tag.strip.capitalize}")
+  end
+  @tags = Tag.all
   erb :show_post
 end

@@ -1,3 +1,9 @@
+<!-- <a href="/posts/<%=@post.id%>" method="delete" class="small button">Delete Post</a> -->
+<form action="/posts/<%=@post.id%>" method="POST">
+  <input type="hidden" name="_method" value="delete">
+  <button class="small button" type="submit">Delete Post</button>
+</form>
+
 <div class="row">
   <div class="panel eight columns">
       <h4><%=@post.title%></h4>
