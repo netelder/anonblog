@@ -12,6 +12,7 @@ end
 get '/posts/:id' do
   @post = Post.find(params[:id])
   #send it to the display post erb
+  @tags = Tag.all
   erb :show_post
 end
 
@@ -28,6 +29,7 @@ end
 delete '/posts/:id' do
   #delete post(id)
   @deleted = params[:id]
+  @tags = Tag.all
   erb :posts
 end
 

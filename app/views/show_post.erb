@@ -3,9 +3,14 @@
       <h4><%=@post.title%></h4>
       <p><%=@post.body%></p>
   </div>
-  <div class="four columns">
-    <h3>Design is Hard</h3>
-    <p>That's why I let Zurb do the hard work</p>
+  <div class="panel four columns">
+    <h4>Available Tags</h4>
+    <ul class="no-bullet">
+    <li><a href="/posts">[All]</a></li>
+    <% @tags.each do |tag| %>
+      <li><%=tag_link(tag)%></li>
+    <% end %>
+  </ul>
   </div>
 </div>
 

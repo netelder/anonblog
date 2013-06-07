@@ -1,6 +1,6 @@
 get '/' do
   # Look in app/views/index.erb
-  erb :index
+  redirect '/posts'
 end
 
 get '/zurb_demo' do
